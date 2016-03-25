@@ -7,7 +7,7 @@ Awk is a data manipulation programming language that exists within UNIX, similar
 Awk commands follow a basic structure of `pattern {action}`. The user gives the program a regular expression to be evaluated: `pattern`. If the regular expression turns out to be true, then a command is executed `{action}`. If the user just provides the `{action}` with no pattern to be matched, then awk will run the command on all records. As a quick reminder, a regular expression is just a sequence of charaacters that define a pattern. 
 
 ## Important notes
-A few important notes before we begin, most of the commands below are designed to print to screen so that it will be easy to visualize what is happening to our files as we move along, but you can also print all results to a file  by adding this sign `>` and a new output file name at the end of each command ` pattern {action} > newfile`. 
+A few important notes before we begin, most of the commands below are designed to print to screen so that it will be easy to visualize what is happening to our files as we move along, but you can also print all results to a file  by adding this sign `>` and a new output file name at the end of each command ` pattern {action} > newfile`.
 
 Commands to be executed in the terminal will look like this: 
 ```
@@ -23,11 +23,16 @@ To start, let's take a look at our first example file using cat:
 cat chr7.bed 
 ```
 
-This file is in .bed tabular format. There are columns for chromosome name, chromosome start position, chromosome end, position , score, strand etc... So how can we replicate the cat using awk?
+This file is in .bed tabular format. There are columns for chromosome name, chromosome start position, chromosome end, position , score, strand, etc... So, how can we replicate the cat function using awk?
 ```
 awk '{ print $0 }' chr7.bed
 ```
+The command above prints all the contents of a file to the screen. `{print}` is the action, but by using `$0` we have omitted a pattern. Instead we are telling awk taht we want all fields for each record to be printed.  
 
+What if we just wanted to print the first field?
+```
+awk '{ print $1 }' chr7.bed
+``` 
 
 
 
