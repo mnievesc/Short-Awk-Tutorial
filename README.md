@@ -13,7 +13,7 @@ Commands to be executed in the terminal will look like this:
 ```
 echo "I am a command, please type or copy-paste me into your terminal"
 ```
-Comments will be noted by this sign `#`. You do not need to copy these into your terminal, but if you do nothing will happen.
+Comments will be noted by this sign `#`. You do not need to copy these into your terminal, they are just here to give additional information on what the commands are doing.
 
 We will be working with example files in .bed format I downloaded and modified from the UCSC genome browser (https://genome.ucsc.edu/). I picked the .bed format because the data is organized in tab-delimited format which is exactly the type of data that awk excels at working with. For more on the .bed format see: https://genome.ucsc.edu/FAQ/FAQformat.html#format1. I also want to mention that the content and structure of this tutorial is largely based on the great chapter **Unix Data Tools** in *Buffalo V (2015). Bioinformatics Data Skills. O'Reilly Media*.
 
@@ -54,5 +54,23 @@ What if we wanted to combine the 1st field with the chromosome name, the 2nd  fi
 ```
 awk '{ print $1"\t"$2"\t"$6}' chr7.bed
 ```
-That works! But if we had a much larger file structuring our command like this would involve a lot of typing. So, to shorten our workload awk has some built in variables that help modify the output so its not necessary to type in the tab-delimiter symbol `\t` every time. There are many different types of these built in variables. Right now, I will show you how to tuse a type called field separators, specifically output field separators. You can use these by inserting the `-v` flag in your command. There are many flags you can use to modify input or output with awk. You can see them all if you type `man awk` into the command line. (Note: To exit the `man` page, type `:q`). 
+That works! But if we had a much larger file structuring our command like this would involve a lot of typing. Awk has some built in variables that help modify the output so its not necessary to type in the tab-delimiter symbol `\t` every time. There are many different types of these built in variables. We will use a type called field separators. Specifically, we will use the output field separator `OFS` which specifies what the output should be delimited by. To use the field separator we need to insert the `-v` flag in our command. 
+```
+awk -v OFS="\t" '{ print $1,$2,$6}' chr7.bed      # notice the commas here
+```
+You can use the output field separator to specify any symbol. Like for example, if we wanted to separate our data fields with colons we would do this:
+```
+awk -v OFS=":" '{ print $1,$2,$6}' chr7.bed      # notice the commas here
+```
+This capability is extremely useful for bioinformatics because sometimes it is necessary to transform data into different formats. Awk can help you do this quite easily.
+
+As we have learned so far, awk assumes all your input data is tab-delimited. If we want to work with something else, like say a .csv file (comma separated values), we have to tell awk that the input field separator will be different. For that we can use use the built in variable `FS`.  Let's try it by importing our second example file: chroms.csv
+```
+awk -v FS="," '{ print $1,$2,$3}' chroms.csv
+```
+
+
+
+
+As an aside, there are many flags you can use to modify input or output with awk. You can see them all if you type `man awk` into the command line. (Note: To exit the `man` page, type `:q`). 
 
