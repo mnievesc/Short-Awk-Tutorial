@@ -31,7 +31,7 @@ The command above prints all the contents of a file to the screen. `{print}` is 
 ```
 awk '{ print $1 }' chr7.bed
 ``` 
-Now if we wanted to save the output of our awk commands to file instead of printing it to the screen we need to use `>` and provide the program with a new file name. We can view our new file using `cat`. Let us leave that file in our directory for now, but can you think of how we could erase it? 
+Now if we wanted to save the output of our awk commands to file instead of printing it to the screen we need to use `>` and provide the program with a new file name. We can view our new file using `cat`. Let us leave that file in our directory for now, but can you think of how we could erase it using the command line? 
 ```
 awk '{ print $1 }' chr7.bed > newfile
 cat newfile
@@ -40,10 +40,11 @@ We can also use awk to select more than one field in our data file.
 ```
 awk '{ print $1 $2}' chr7.bed
 ```
-
-
-
-
+Wait, what happened here? Awk assumes we are working with tab-delimited input data, but it does not assume our output is in this format. We have to tell awk how to separate the data and we can do that by specifying it in our command.
+```
+awk '{ print $1" "$2}' chr7.bed # space delimited
+awk '{ print $1"\t"$2}' chr7.bed # tab delimited
+``` 
 
 
 
