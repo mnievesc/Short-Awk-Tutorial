@@ -119,7 +119,7 @@ have enough knowledge to be able to search for those commands and apply them.
 
 ##References and sources for more information
 #####Main source:
-Buffalo V. 2015. Bioinformatics Data Skills. California: Oreilly Media.
+Buffalo V. 2015. Bioinformatics Data Skills. California: O'reilly Media.
 #####Secondary sources:
 1. http://www.theunixschool.com/2011/05/awk-read-file-and-split-contents.html
 2. https://www.gnu.org/software/gawk/manual/html_node/Output-Separators.html
