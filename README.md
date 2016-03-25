@@ -64,7 +64,7 @@ awk -v OFS=":" '{ print $1,$2,$6}' chr7.bed      # notice the commas here
 ```
 This capability is extremely useful for bioinformatics because sometimes it is necessary to transform data into different formats. Awk can help you do this quite easily.
 
-As we have learned so far, awk assumes all your input data is tab-delimited. If we want to work with something else, like say a .csv file (comma separated values), we have to tell awk that the input field separator will be different. For that we can use use the built in variable `FS`.  Let's try it by importing our second example file: chroms.csv
+As we have learned so far, awk assumes all your input data is tab-delimited. If we want to work with something else, like say a .csv file (comma separated values), we have to tell awk that the input field separator will be different. For that we can use the built in variable `FS`.  Let's try it by importing our second example file: chroms.csv
 ```
 awk -v FS="," '{ print $1,$2,$3}' chroms.csv
 ```
