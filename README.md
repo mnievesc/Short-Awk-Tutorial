@@ -124,9 +124,9 @@ have enough knowledge to be able to search for those commands and apply them.
 #####Main source:
 Buffalo V. 2015. Bioinformatics Data Skills. California: Oreilly Media.
 #####Secondary sources:
-http://www.theunixschool.com/2011/05/awk-read-file-and-split-contents.html
-https://www.gnu.org/software/gawk/manual/html_node/Output-Separators.html
-https://emb.carnegiescience.edu/sites/default/files/140602-sedawkbash.key_.pdf
-https://genome.ucsc.edu/FAQ/FAQformat.html
-https://github.com/stephenturner/oneliners
-http://intro-prog-bioinfo-2014.wikispaces.com/Session+1.1
+-http://www.theunixschool.com/2011/05/awk-read-file-and-split-contents.html
+-https://www.gnu.org/software/gawk/manual/html_node/Output-Separators.html
+-https://emb.carnegiescience.edu/sites/default/files/140602-sedawkbash.key_.pdf
+-https://genome.ucsc.edu/FAQ/FAQformat.html
+-https://github.com/stephenturner/oneliners
+-http://intro-prog-bioinfo-2014.wikispaces.com/Session+1.1
