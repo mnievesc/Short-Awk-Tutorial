@@ -86,6 +86,14 @@ Now note here a few new things, mainly the use of this symbol: `!=`. This is a n
 ```
 awk 'NR >=3 && NR <=5' chr11.bed
 ```
+Here we are telling awk to select any lines that equal or above record 3 (`>=`) AND (represented by `&&`) lower or equal to record 5. This is almost like an if condition. You can use if statements and loops with awk, but  I will let you guys explore that on your own later.
+
+Another thing you can do with awk is perform arithmetic operations. This could be useful for example if you are
+trying to filter data. Say  that for our chr7.bed file we only want to select genes for analysis that are
+longer than 1200 base pairs (we are going to go back to chr7.bed file because there is no header in that file, although you can probably imagine how we could do all of the subsequent operations with the chr11.bed file by excluding the header using NR). Let's remind ourselves what this file looks like using cat:
+```
+cat chr7.bed
+```
 
 
 
