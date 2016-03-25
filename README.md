@@ -28,11 +28,11 @@ This file is in .bed tabular format. There are columns for chromosome name, chro
 ```
 awk '{ print $0 }' chr7.bed
 ```
-The command above prints all the contents of a file to the screen. `{print}` is the action, but by using `$0` we have omitted a pattern. Instead we are telling awk taht we want all fields for each record to be printed.  What if we just wanted to print the first field (column) in our file instead?
+The command above prints all the contents of a file to the screen. `{print}` is the action, but by using `$0` we have omitted a pattern. Instead we are telling awk that we want all fields for each record to be printed.  What if we just wanted to print the first field (column) in our file instead?
 ```
 awk '{ print $1 }' chr7.bed
 ``` 
-Now if we wanted to save the output of our awk commands to file instead of printing it to the screen we need to use `>` and provide the program with a new file name. We can view our new file using `cat`. Let us leave that file in our directory for now, but can you think of how we could erase it using the command line? 
+Now if we want to save the output of our awk commands to file instead of printing it to the screen we need to use `>` and provide the program with a new file name. We can view our new file using `cat`. Let us leave that file in our directory for now, but can you think of how we could erase it using the command line? 
 ```
 awk '{ print $1 }' chr7.bed > newfile
 cat newfile
@@ -46,12 +46,13 @@ Wait, what happened here? Awk assumes we are working with tab-delimited input da
 awk '{ print $1" "$2}' chr7.bed    # space delimited
 awk '{ print $1"\t"$2}' chr7.bed   # tab delimited
 ``` 
-We can even print out non-contiguous columns!
+We can even print out non-contiguous fields!
 ```
 awk '{ print $3" "$1}' chr7.bed    # space delimited
 ```
-What if we wanted to combine the chromosome name, the 2nd column with the position and then column 6 which tells us if the variant is on the positive or negativestrand in a tab delim file? How would you do it with what you have learned so far?
+What if we wanted to combine the 1st field with the chromosome name, the 2nd  field with the position and field 6 which tells us if the variant is on the positive or negative strand in one tab-delimited file? How would you do this with what you have learned so far?
+```
 awk '{ print $1"\t"$2"\t"$6}' chr7.bed
-
-
+```
+That works! But if we had a much larger file structuring our command like this would involve a lot of typing. So, to shorten our workload awk has some built in variables that help modify the output so its not necessary to type in the tab-delimiter symbol `\t` every time. There are many different types of these built in variables. Right now, I will show you how to tuse a type called field separators, specifically output field separators. You can use these by inserting the `-v` flag in your command. There are many flags you can use to modify input or output with awk. You can see them all if you type `man awk` into the command line. (Note: To exit the `man` page, type `:q`). 
 
