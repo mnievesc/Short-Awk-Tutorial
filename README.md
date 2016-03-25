@@ -73,13 +73,15 @@ And of course you can combine input and output separator statements.
 awk -v FS="," '{ print $1,$2,$3}' OFS=":" chroms.csv
 ``` 
 There are many more flags you can use to modify input or output with awk. You can see them all if you type `man awk` into the command line. (Note: To exit the `man` page, type `:q`). 
-Another helpful built in variable is NR. NR stands for range of lines, or current record
-and allows you select specific lines, so for example lets take a look at this other file chr11.bed
-cat chr11.bed
-You can see its got a header, now what if I wanted to exclude that header and work with the columns instead? I
-can use this command, note that in this case I do not need the -v flag
-awk 'NR!=1 {print $0}' chr11.bed
 
+Another helpful built in variable is `NR`. NR stands for range of lines, or current record and it allows you to select specific lines, so for example lets take a look at our third example file: chr11.bed
+```
+cat chr11.bed
+```
+This file has a header, now what if I wanted to exclude that header and justwork with the data columns? We can use NR. Note that in this case I do not need the -v flag
+```
+awk 'NR!=1 {print $0}' chr11.bed
+```
 
 
 
