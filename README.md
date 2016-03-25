@@ -98,9 +98,36 @@ So as a reminder, the 2nd field in this file provides the chromosome start posit
 ```
 awk '{print $3-$2}' chr7.bed
 ```
-Ok, so there are a few genes that are longer than 1200 bp. Let's filter out the other genes that we are not interested in.
+Ok, so there are a few genes that are longer than 1200 bp. Let's filter out the information for the other genes that we are not interested in using a regular expression.
 ```
-awk '$3-$2 > 1200' chr7.bed
+awk '$3-$2 > 1200' chr7.bed       # Note that here we do not need the print statement
 ```
+You can also chain statements, like say for example we only wanted genes on the positive DNA strand (field 4 provides this information) and that are over 1100 bp long. 
+```
+awk '$4 ~/Pos*/ && $3 - $2 > 1100' chr7.bed
+```
+So here we have done few things, the first is we use a pattern `$4 ~/Pos*/`. This pattern is a regular expression, its matching field 4 to the statement `Po`s and then using `*` which is a wildcard. In other words its saying, any time you see
+Pos regardless of what follows, select that line. The pattern to be matched is in slashes. Then we have `&&` for
+AND. So the command is saying, after you match this pattern (i.e. find elements on the positive strand) do something else, which in this case is perform the arithmetic. 
 
+We can even use awk to create new fields in a file based on previously inputed information. Dor example if we wanted to make a new file that only contains the chromosome name, positions and then the length of each gene we could do:
+```
+awk -v OFS="\t" '{print $1,$2,$3,$3-$2}' chr7.bed
+```
+Can you explain what we did here? 
 
+This is just skimming the surface of all that awk can do, you can also use conditional statements, calculate more
+complex things like means, or apply user created variables in awk. But I think that with this short tutorial you will
+have enough knowledge to be able to search for those commands and apply them.
+
+##References and sources for more information
+#####Main source:
+Buffalo V. 2015. Bioinformatics Data Skills. California: Oreilly Media.
+
+#####Secondary sources:
+http://www.theunixschool.com/2011/05/awk-read-file-and-split-contents.html
+https://www.gnu.org/software/gawk/manual/html_node/Output-Separators.html
+https://emb.carnegiescience.edu/sites/default/files/140602-sedawkbash.key_.pdf
+https://genome.ucsc.edu/FAQ/FAQformat.html
+https://github.com/stephenturner/oneliners
+http://intro-prog-bioinfo-2014.wikispaces.com/Session+1.1
