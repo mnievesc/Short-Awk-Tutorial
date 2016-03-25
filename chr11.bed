@@ -1,0 +1,6 @@
+rack name=HbVar type=bedDetail description="HbVar custom track" db=hg19 visibility=3 url="http://globin.bx.psu.edu/cgi-bin/hbvar/query_vars3?display_format=page&mode=output&id=$$"
+chr11	5246919	5246920	Hb_North_York	2619	Hemoglobin variant
+chr11	5255660	5255661	HBD c.1 G>A	2659	delta0 thalassemia
+chr11	5247945	5247946	Hb Sheffield	2672	Hemoglobin variant
+chr11	5255415	5255416	Hb A2-Lyon	2676	Hemoglobin variant
+chr11	5248234	5248235	Hb Aix-les-Bains	2677	Hemoglobin variant
