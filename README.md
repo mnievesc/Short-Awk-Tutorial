@@ -14,8 +14,28 @@ Commands to be executed in the terminal will look like this:
 echo "I am a command, please type or copy-paste me into your terminal"
 ```
 
-We will be working with exampe files in .bed format I downloaded and modified from the UCSC genome browser (https://genome.ucsc.edu/). I picked the .bed format because the data is organized in tab-delimited columnar format which is exactly the type of data that awk excels at working with. For more on the .bed format see: https://genome.ucsc.edu/FAQ/FAQformat.html#format1. I also want to mention that the content and structure of this tutorial is largely based on the great chapter **Unix Data Tools** in *Buffalo V (2015). Bioinformatics Data Skills. O'Reilly Media*.
+We will be working with example files in .bed format I downloaded and modified from the UCSC genome browser (https://genome.ucsc.edu/). I picked the .bed format because the data is organized in tab-delimited columnar format which is exactly the type of data that awk excels at working with. For more on the .bed format see: https://genome.ucsc.edu/FAQ/FAQformat.html#format1. I also want to mention that the content and structure of this tutorial is largely based on the great chapter **Unix Data Tools** in *Buffalo V (2015). Bioinformatics Data Skills. O'Reilly Media*.
 
 
 ## So let's get started!
+To start, let's take a look at our first example file using cat:
+```
+cat chr7.bed 
+```
+
+This file is in .bed tabular format. There are columns for chromosome name, chromosome start position, chromosome end, position , score, strand etc... So how can we replicate the cat using awk?
+```
+awk '{ print $0 }' chr7.bed
+```
+
+
+
+
+
+
+
+
+
+
+
 
