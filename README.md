@@ -27,9 +27,7 @@ This file is in .bed tabular format. There are columns for chromosome name, chro
 ```
 awk '{ print $0 }' chr7.bed
 ```
-The command above prints all the contents of a file to the screen. `{print}` is the action, but by using `$0` we have omitted a pattern. Instead we are telling awk taht we want all fields for each record to be printed.  
-
-What if we just wanted to print the first field?
+The command above prints all the contents of a file to the screen. `{print}` is the action, but by using `$0` we have omitted a pattern. Instead we are telling awk taht we want all fields for each record to be printed.  What if we just wanted to print the first field (column) in our file instead?
 ```
 awk '{ print $1 }' chr7.bed
 ``` 
