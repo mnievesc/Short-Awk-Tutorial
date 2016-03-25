@@ -94,7 +94,13 @@ longer than 1200 base pairs (we are going to go back to chr7.bed file because th
 ```
 cat chr7.bed
 ```
-
-
+So as a reminder, the 2nd field in this file provides the chromosome start position of our gene of interest. The 3rd field provides the end position. So if we wanted to see what is the length of each of the genes in chromosome 7 we can use this command to print a list of base pair lengths to the screen:
+```
+awk '{print $3-$2}' chr7.bed
+```
+Ok, so there are a few genes that are longer than 1200 bp. Let's filter out the other genes that we are not interested in.
+```
+awk '$3-$2 > 1200' chr7.bed
+```
 
 
