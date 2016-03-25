@@ -78,19 +78,18 @@ Another helpful built in variable is `NR`. NR stands for range of lines, or curr
 ```
 cat chr11.bed
 ```
-This file has a header, now what if I wanted to exclude that header and justwork with the data columns? We can use NR. Note that in this case I do not need the -v flag
+This file has a header, now what if we want to exclude that header and just work with the data columns? We can use NR to do that. Note that in this case I do not need the -v flag
 ```
 awk 'NR!=1 {print $0}' chr11.bed
 ```
-Now note here a few new things, mainly the use of this symbol: `!=`. This is a negation statement that means NOT TRUE, this type of statement is really common with programming languages. In this case we are using it to tell awk print all fields except the first field which is NR=1. The above command is a good demonstration of how you can use awk with conditional statements  that will allow further manipulation. Another example of that is using NR to extract ranges of lines. 
+Note here a few new things, mainly the use of this symbol: `!=`. This is a negation statement that means NOT TRUE. In this case we are using it to tell awk to print all fields except those in the first record (or line) which is NR=1. The above command is a good demonstration of how you can use awk with conditional statements. Another example of that is using NR to extract ranges of lines. 
 ```
 awk 'NR >=3 && NR <=5' chr11.bed
 ```
-Here we are telling awk to select any lines that equal or above record 3 (`>=`) AND (represented by `&&`) lower or equal to record 5. This is almost like an if condition. You can use if statements and loops with awk, but  I will let you guys explore that on your own later.
+Here we are telling awk to select any record (lines) equal or above record 3 (`>=`) AND (represented by `&&`) lower or equal to record 5. This is almost like an if condition. In fact, you can use if statements and loops with awk, but I will let you guys explore that on your own later.
 
 Another thing you can do with awk is perform arithmetic operations. This could be useful for example if you are
-trying to filter data. Say  that for our chr7.bed file we only want to select genes for analysis that are
-longer than 1200 base pairs (we are going to go back to chr7.bed file because there is no header in that file, although you can probably imagine how we could do all of the subsequent operations with the chr11.bed file by excluding the header using NR). Let's remind ourselves what this file looks like using cat:
+trying to filter data. Say  that for our chr7.bed file we only want to select genes for analysis that are longer than 1200 base pairs (we are going to go back to chr7.bed file because there is no header in that file, although you can probably imagine how we could do all of the subsequent operations with the chr11.bed file by excluding the header using NR). Let's remind ourselves what this file looks like using cat:
 ```
 cat chr7.bed
 ```
@@ -98,19 +97,17 @@ So as a reminder, the 2nd field in this file provides the chromosome start posit
 ```
 awk '{print $3-$2}' chr7.bed
 ```
-Ok, so there are a few genes that are longer than 1200 bp. Let's filter out the information for the other genes that we are not interested in using a regular expression.
+Ok, so there are a few genes that are longer than 1200 bp. Let's filter out the information for the other genes that we are not interested in by using a regular expression.
 ```
 awk '$3-$2 > 1200' chr7.bed       # Note that here we do not need the print statement
 ```
-You can also chain statements, like say for example we only wanted genes on the positive DNA strand (field 4 provides this information) and that are over 1100 bp long. 
+You can also chain statements, like say for example we only wanted genes on the positive DNA strand (field 4 provides this information) and that are over 1100 base pairs long. 
 ```
 awk '$4 ~/Pos*/ && $3 - $2 > 1100' chr7.bed
 ```
-So here we have done few things, the first is we use a pattern `$4 ~/Pos*/`. This pattern is a regular expression, its matching field 4 to the statement `Po`s and then using `*` which is a wildcard. In other words its saying, any time you see
-Pos regardless of what follows, select that line. The pattern to be matched is in slashes. Then we have `&&` for
-AND. So the command is saying, after you match this pattern (i.e. find elements on the positive strand) do something else, which in this case is perform the arithmetic. 
+So here we have done few things, the first is we use a pattern `$4 ~/Pos*/`. This pattern is a regular expression, its matching field 4 to the statement `Pos` and then using `*` which is a wildcard. In other words its saying, in field 4 ($4), any time you see the pattern "Pos" (~/Pos), regardless of what follows (*), select that line. The pattern to be matched is in slashes. Then we have `&&` for AND. So the command is saying, after you match this pattern (i.e. find elements on the positive strand) do something else, which in this case is perform the arithmetic. 
 
-We can even use awk to create new fields in a file based on previously inputed information. Dor example if we wanted to make a new file that only contains the chromosome name, positions and then the length of each gene we could do:
+We can even use awk to create new fields in a file based on previously inputed information. For example if we wanted to make a new file that only contains the chromosome name, positions and then the length of each gene we could do:
 ```
 awk -v OFS="\t" '{print $1,$2,$3,$3-$2}' chr7.bed
 ```
