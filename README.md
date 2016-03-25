@@ -123,7 +123,6 @@ have enough knowledge to be able to search for those commands and apply them.
 ##References and sources for more information
 #####Main source:
 Buffalo V. 2015. Bioinformatics Data Skills. California: Oreilly Media.
-
 #####Secondary sources:
 http://www.theunixschool.com/2011/05/awk-read-file-and-split-contents.html
 https://www.gnu.org/software/gawk/manual/html_node/Output-Separators.html
