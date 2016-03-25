@@ -82,8 +82,10 @@ This file has a header, now what if I wanted to exclude that header and justwork
 ```
 awk 'NR!=1 {print $0}' chr11.bed
 ```
-
-
+Now note here a few new things, mainly the use of this symbol: `!=`. This is a negation statement that means NOT TRUE, this type of statement is really common with programming languages. In this case we are using it to tell awk print all fields except the first field which is NR=1. The above command is a good demonstration of how you can use awk with conditional statements  that will allow further manipulation. Another example of that is using NR to extract ranges of lines. 
+```
+awk 'NR >=3 && NR <=5' chr11.bed
+```
 
 
 
