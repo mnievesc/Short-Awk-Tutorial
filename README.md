@@ -13,6 +13,7 @@ Commands to be executed in the terminal will look like this:
 ```
 echo "I am a command, please type or copy-paste me into your terminal"
 ```
+Comments will be noted by this sign `#`. You do not need to copy these into your terminal, but if you do nothing will happen.
 
 We will be working with example files in .bed format I downloaded and modified from the UCSC genome browser (https://genome.ucsc.edu/). I picked the .bed format because the data is organized in tab-delimited columnar format which is exactly the type of data that awk excels at working with. For more on the .bed format see: https://genome.ucsc.edu/FAQ/FAQformat.html#format1. I also want to mention that the content and structure of this tutorial is largely based on the great chapter **Unix Data Tools** in *Buffalo V (2015). Bioinformatics Data Skills. O'Reilly Media*.
 
@@ -42,8 +43,8 @@ awk '{ print $1 $2}' chr7.bed
 ```
 Wait, what happened here? Awk assumes we are working with tab-delimited input data, but it does not assume our output is in this format. We have to tell awk how to separate the data and we can do that by specifying it in our command.
 ```
-awk '{ print $1" "$2}' chr7.bed # space delimited
-awk '{ print $1"\t"$2}' chr7.bed # tab delimited
+awk '{ print $1" "$2}' chr7.bed    # space delimited
+awk '{ print $1"\t"$2}' chr7.bed   # tab delimited
 ``` 
 
 
