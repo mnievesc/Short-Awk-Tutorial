@@ -1,5 +1,5 @@
 # Short-Awk-Tutorial
-The tutorial below is designed to be completed in ~40-45 minutes by anyone with basic understanding of UNIX. To begin please download the three example files to your working directory: chr7.bed, chr11.bed and chroms.csv.  
+The tutorial below is designed to be completed in ~30 minutes by anyone with basic understanding of UNIX. To begin please download the three example files to your working directory: chr7.bed, chr11.bed and chroms.csv.  
 
 ## What is awk?
 Awk is a data manipulation programming language that exists within UNIX, similar to grep or cut. It is useful for extracting text and quick processing of tabular data. Awk works by processing data one record at a time. Each line in a text file is a record and each record is composed of fields. So if you imagine a table full of data, each row is a record and each column within that row is a field.
